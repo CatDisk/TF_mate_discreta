@@ -1,0 +1,19 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+
+\begin{document}
+\section{Los puentes de K\"{o}nigsberg}
+El problema de los puentes de K\"{o}nigsberg ha generado interrogantes en los matemáticos del siglo 18. La meta es de encontrar un camino que vaya por la ciudad, cruzando exactamente una vez cada uno de los siete puentes y terminar el recorrido en el mismo lugar donde comenzó. En 1736 este problema es resuelto por el matemático suizo Leonard Euler, que en ese momento era profesor de matemática en la universidad de San Petersburgo. Euler logró demostrar, que dicho camino no puede existir.
+\subsection{Euler y el problema de los puentes de K\"{o}nigsberg}
+Al buscar un camino cíclico, el cual cruce los 7 puentes de K\"{o}nigsberg exactamente una vez, escribe Euler, que una forma de resolver el problema, era trazar todos los caminos posibles y revisar si alguno de ellos tiene las características deseadas. Esta solución es demasiado trabajosa para problemas mas complejos, por lo cual Euler quería desarrollar un método matemático que le indique si un camino así sería posible. Primero simplificó el mapa de K\"{o}nigsberg, tal que la secuencia de letras A,B,C y D pueda describir cada camino posible por la ciudad.
+
+Por ejemplo la secuencia ADCABAC describe el camino que comienza en A, cruza el puente para llegar a D, va de D a C, etc. Este camino cruza seis de los siete puentes que pueden ser descritos como los pares AD, DC, CA, AB, BA y AC.
+Esto simplifica el problema, ya que solamente se tiene que encontrar una secuencia de 8 letras (ya que se trata de 7 puentes), en la que cada letra aparezca en relación a la cantidad de puentes que la conecta. Antes de buscar esa secuencia, Euler quería demostrar que esa secuencia existe. Euler argumenta que D tiene que aparecer exactamente dos veces en esa secuencia, ya que D está conectado con tres puentes. Si D aparece una vez en la secuencia, solamente se cruzarían dos de los tres puentes. Si D aparece tres veces en la secuencia, debería estar conectado con, como mínimo, cuatro puentes. Asimismo deberían aparecer C y B dos y A tres veces. Por lo tanto necesitaría la secuencia 9 letras, lo que es imposible, ya que solamente hay 7 puentes. Esto demuestra que un camino que cruce cada puente un a sola vez y que termine en la letra que comenzó, no existe. 
+\\A partir de la solución a este problema Euler establece los fundamentos para la teoría de los grafos a pesar de que no utilizó conceptos como vértices, aristas o grafos.
+\section{Ciclos y grafos eulerianos}
+
+\end{document}
