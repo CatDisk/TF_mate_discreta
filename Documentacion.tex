@@ -49,7 +49,7 @@ La proposición es demostrada mediante el razonamiento circular.
 \\$3. \rightarrow 1.$
 \\Asumimos que la disyunción de $G$ sean ciclos. Estos ciclos se llamarán $S_{1}, S_{2}, ..., S_{k}$. Sea $C$ el ciclo mas largo, tal que el conjunto de aristas de $C$ es $$E(C)=E(S_{j1}) \cup E(S_{j2}) \cup ... \cup E(S_{jm})$$ para varias $S_{j1}, S_{j2}, ..., S_{jm}$. Sea entonces $e$ una arista que no pertenezca a $C$, pero que sea incidente en un nodo $v$ de $C$, entonces $e$ y $v$ deberían pertenecer a un ciclo que no comparte ninguna arista con $C$. Sea entonces $C'$ el ciclo que se obtiene uniendo $C$ y $S_{i}$ en $v$. Como a $C'$ le pertenecen todas las aristas de $C$ y $S_{i}$, contradice que $C$ sea el ciclo mas largo. Por lo tanto ya le perteneces todas las aristas de $G$ a $C$, lo que quiere decir que $C$ es un ciclo euleriano. Por ello, $G$ es un grafo euleriano.
 \end{proof}
-\section{Algoritmo de Hierholzer para encontrar un ciclo euleriano}
+\section{Algoritmos para encontrar ciclos eulerianos}
 Si se conoce que $G$ es un grafo euleriano, se tiene que poder encontrar el ciclo euleriano en $G$. Esto es posible con el algoritmo de Hierholzer.
 \subsection{Algoritmo de Hierholzer}
 Sea dado un grafo euleriano $G$
