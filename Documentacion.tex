@@ -88,10 +88,10 @@ A diferencia del algoritmo de Hierholzer, es posible, mediante el algoritmo de F
 \item Sea $i=1$.
 \item A cada uno los valores $m_{ij}$, en los que $j>i$, se les asigna un valor de $1$ o $0$, de tal manera que la suma de los elementos de $i$ que contengan $1$ sea par.
 \item $m_{ij}=m_{ji}$, para todos los elementos de la fila $i$, para los que vale $j>i$.
-\item Si $i=m-1$ termina el algoritmo. De lo contrario aumenta el valor de $i$ por uno y se regresa al paso 5.
+\item Si $i=m-1$, termina el algoritmo. De lo contrario aumenta el valor de $i$ por uno y se regresa al paso 5.
 \end{enumerate}
 \subsubsection*{Ejemplo}
-Sea el ingreso del usuario $m=7$, se genera una matriz de relaci\'{o}n $M_{R}$ (para los nodos $A, B, C, ..., G$) de $7\times 7$. La matriz resultante del paso 3 ser\'{i}a esta:
+Si el ingreso del usuario es $m=7$, se genera una matriz de relaci\'{o}n $M_{R}$ (para los nodos $A, B, C, ..., G$) de $7\times 7$. La matriz resultante del paso 3 ser\'{i}a esta:
 $$M_{R}=
 \bordermatrix{
      &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
@@ -104,7 +104,7 @@ F    &     m_{FA}&     m_{FB}     &     m_{FC}     &     m_{FD}     &     m_{FE}
 G    &     m_{GA}&     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     0     \cr
 }
 $$
-Al culminar el primer bucle del algoritmo, es esta la matriz:
+Al culminar el bucle del algoritmo por primera vez, es esta la matriz:
 $$M_{R}=
 \bordermatrix{
      &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
