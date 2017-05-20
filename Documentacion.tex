@@ -4,6 +4,7 @@
 \usepackage{fullpage}
 \usepackage{graphicx}
 \usepackage{amsthm}
+\usepackage{tikz}
 \usepackage[spanish]{babel}
 
 \newtheorem{definition}{Definición}
@@ -77,7 +78,7 @@ Para demostrar que el resultado del algoritmo de Fleury es un ciclo euleriano, s
 \begin{proof}
 Ya que el grado de cada nodo de $G$ es par, podemos salir de cada nodo, con la excepción del nodo de inicio $v$. Supongamos que el algoritmo se atasque en el nodo $v$. Las aristas no marcadas forman componentes conexas, las cuales son eulerianas, ya que el grado de cada nodo es par. Si el ultimo nodo visitado por el algoritmo es $w$ y luego salio por la arista $wv_{1}$, entonces el resto del camino se define por $v_{1}v_{2}...v_{k}=v$. Esto demuestra que la arista $wv_{1}$ es un puente en el algoritmo de Fleury. Sin embargo existen por lo menos dos aristas incidentes en $w$, que no son puentes. Por eso la arista $wv_{1}$ desde un principio no es seleccionada por el algoritmo.
 \end{proof}
-A diferencia del algoritmo de Hierholzer, es posible, mediante el algoritmo de Fleury, de encontrar un camino euleriano, en grafos con dos nodos de grados impares. Para ello se elije uno de los dos nodos como "nodo principal".
+A diferencia del algoritmo de Hierholzer, es posible, mediante el algoritmo de Fleury, de encontrar un camino euleriano, en grafos con dos nodos de grado impar. Para ello se elije uno de los dos nodos como "nodo principal".
 \newpage
 \section{Estructura del programa}
 \subsection{Algoritmo para generar la matriz de relaci\'{o}n}
@@ -131,4 +132,42 @@ G&1&0&0&1&0&0&0\cr
 }
 $$
 \subsection{Algoritmo para dibujar el grafo correspondiente a $M_{R}$}
+\begin{enumerate}
+\item Se dibujan los nodos $N_{1}, N_{2}, ..., N_{m}$ al rededor de un punto central, comenzando por $N_{1}$ en $0^{\circ}$.
+\item Se selecciona el grado de separaci\'{o}n $\alpha$, de tal manera que para cualquier $N_{n}$, $$\alpha(N_{n}) = n\frac{m}{360^{\circ}}$$
+\item Para cada $m_{ij}\in <M_{R}  \vert  i>j$ que sea 1, se traza una arista del nodo $N_{i}$ al nodo $N_{j}$.
+\end{enumerate}
+\subsubsection*{Ejemplo}
+Dibujaremos el grafo a partir de la matriz dada en el ejemplo anterior. \\Tomamos al nodo $A$ como nuestro $N_{1}$.  Como $m = 7$, el grado de la separaci\'{o}n de cada nodo al nodo previo es de $\alpha \approx 51^\circ$. La imagen resultante ser\'{i}a la siguiente:\\
+\begin{center}
+\begin{tikzpicture}
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)      {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw[dashed, very thick] (0,0) -- (a) (0,0) -- (b);
+\draw (1,0) arc (0:51:1cm) node [right, near start] {$51^\circ$};
+\end{tikzpicture}
+\end{center}
+\newpage
+Al conectar los nodos con aristas seg\'{u}n $M_{R}$, se obtiene el grafo completado.
+\begin{center}
+\begin{tikzpicture}
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)      {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw [very thick] (a) -- (b) (a) -- (c) (a) -- (e) (a) -- (g);
+\draw [very thick] (b) -- (c);
+\draw [very thick] (c) -- (e) (c) -- (f);
+\draw [very thick] (d) -- (e) (d) -- (g);
+\draw [very thick] (e) -- (f);
+\end{tikzpicture}
+\end{center}
 \end{document}
