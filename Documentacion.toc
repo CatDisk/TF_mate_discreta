@@ -1,0 +1,14 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\'{o}n: Los puentes de K\"{o}nigsberg}{1}
+\contentsline {subsection}{\numberline {1.1}Euler y el problema de los puentes de K\"{o}nigsberg}{1}
+\contentsline {section}{\numberline {2}Objetivo}{2}
+\contentsline {section}{\numberline {3}Fundamentos te\'{o}ricos}{2}
+\contentsline {subsection}{\numberline {3.1}Caminos y grafos eulerianos}{2}
+\contentsline {subsection}{\numberline {3.2}Algoritmos para encontrar ciclos eulerianos}{3}
+\contentsline {subsubsection}{\numberline {3.2.1}Algoritmo de Hierholzer}{3}
+\contentsline {subsubsection}{\numberline {3.2.2}Algoritmo de Fleury}{4}
+\contentsline {section}{\numberline {4}Estructura del programa}{5}
+\contentsline {subsection}{\numberline {4.1}Algoritmo para generar la matriz de relaci\'{o}n}{5}
+\contentsline {subsubsection}{\numberline {4.1.1}Ejemplo}{5}
+\contentsline {subsection}{\numberline {4.2}Algoritmo para dibujar el grafo correspondiente a $M_{R}$}{6}
+\contentsline {subsubsection}{\numberline {4.2.1}Ejemplo}{7}

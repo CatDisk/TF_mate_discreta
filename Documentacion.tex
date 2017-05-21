@@ -10,22 +10,48 @@
 \newtheorem{definition}{Definición}
 \newtheorem{lemma}{Proposición}
 
-
-
 \begin{document}
-\section{Fundamentos te\'{o}ricos}
-\subsection{Los puentes de K\"{o}nigsberg}
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=0.2]{logo_upc.png}
+
+\begin{Huge}
+Trabajo final: Matem\'{a}tica Discreta
+\end{Huge}
+\vspace{1.5cm}
+\begin{Large}\\
+\vspace{0.5cm}
+Secci\'{o}n: SI-31 Ciclo: 2017-1\\
+\vspace{1.5cm}
+Integrantes:\\
+\item Agreda, Luis Enrique\\
+\item Denegri, Jos\'{e}\\
+\item Schialer, Dominic\\
+\item Uribe, Antonio\\
+\vspace{1.5cm}
+Profesor: Medina Martines, Antonio Marcos
+\vfill
+\today
+\end{Large}
+\end{center}
+\newpage
+\tableofcontents
+\end{titlepage}
+\newpage
+\section{Introducci\'{o}n: Los puentes de K\"{o}nigsberg}
 \begin{center}
 \includegraphics[scale=0.5]{koenigsberg.jpg}
 \end{center}
-El problema de los puentes de K\"{o}nigsberg ha generado interrogantes en los matemáticos del siglo 18. La meta es de encontrar un camino que vaya por la ciudad, cruzando exactamente una vez cada uno de los siete puentes y terminar el recorrido en el mismo lugar donde comenzó. En 1736 este problema es resuelto por el matemático suizo Leonard Euler, que en ese momento era profesor de matemática en la universidad de San Petersburgo. Euler logró demostrar, que dicho camino no puede existir.
-\subsubsection{Euler y el problema de los puentes de K\"{o}nigsberg}
-Al buscar un camino cíclico, el cual cruce los siete puentes de K\"{o}nigsberg exactamente una vez, escribe Euler que una forma de resolver el problema, era trazar todos los caminos posibles y revisar si alguno de ellos tiene las características deseadas. Esta solución es demasiado trabajosa para problemas más complejos, por lo cual Euler quería desarrollar un método matemático que le indique si un camino así sería posible. Primero simplificó el mapa de K\"{o}nigsberg, tal que la secuencia de letras A,B,C y D pueda describir cada camino posible por la ciudad.
+El problema de los puentes de K\"{o}nigsberg ha generado muchas interrogantes en los matemáticos del siglo 18. La meta es de encontrar un camino que vaya por la ciudad, cruzando exactamente una vez cada uno de los siete puentes y terminar el recorrido en el mismo lugar donde comenzó. En 1736 este problema es resuelto por el matemático suizo Leonard Euler, que en ese momento era profesor de matemática en la universidad de San Petersburgo. Euler logró demostrar, que dicho camino no puede existir.\\ Ese descubrimiento estableci\'{o} los fundamentos para la teor\'{i}a de los grafos, que actualmente tiene un sinf\'{i}n de aplicaciones en el mundo real.
+\subsection{Euler y el problema de los puentes de K\"{o}nigsberg}
+Al buscar un camino cíclico, el cual cruce los siete puentes de K\"{o}nigsberg exactamente una vez, escribe Euler, que una forma de resolver el problema, era trazar todos los caminos posibles y revisar si alguno de ellos tiene las características deseadas. Esta solución es demasiado trabajosa para problemas más complejos, por lo cual Euler quería desarrollar un método matemático que le indique si un camino así sería posible. Primero simplificó el mapa de K\"{o}nigsberg, tal que la secuencia de letras A,B,C y D pueda describir cada camino posible por la ciudad.
 \begin{center}
 \includegraphics[scale=0.7]{pregelbruecken.png}
 \end{center}
 Por ejemplo, la secuencia $ADCABAC$ describe el camino que comienza en A, cruza el puente para llegar a $D$, va de $D$ a $C$, etc. Este camino cruza seis de los siete puentes, los cuales pueden ser descritos como los pares $AD$, $DC$, $CA$, $AB$, $BA$ y $AC$. Esto simplifica el problema, ya que solamente se tiene que encontrar una secuencia de 8 letras (ya que se trata de 7 puentes), en la que cada letra aparezca en relación a la cantidad de puentes que la conecta. Antes de buscar esa secuencia, Euler quería demostrar que existe. Euler argumenta que $D$ tiene que aparecer exactamente dos veces en esa secuencia, ya que $D$ está conectado con tres puentes. Si $D$ aparece una vez en la secuencia, solamente se cruzarían dos de los tres puentes. Si $D$ aparece tres veces en la secuencia, debería estar conectado con, como mínimo, cuatro puentes. Asimismo deberían aparecer $C$ y $B$ dos, y $A$ tres veces. Por lo tanto, la secuencia necesitaría 9 letras, lo que es imposible, ya que solamente hay 7 puentes. Esto demuestra que un camino que cruce cada puente un a sola vez y que termine en la letra que comenzó, no existe. 
-\\A partir de la solución a este problema Euler establece los fundamentos para la teoría de los grafos a pesar de que no utilizó conceptos como vértices, aristas o grafos.
+\section{Objetivo}
+El objetivo del siguiente trabajo, es crear un programa que genere un grafo aleatorio de 6 a 12 nodos, cuyos grados sean pares. Luego se simular\'{a} a un cartero que parte de un nodo cualquiera (la oficina del correo) y que tenga que repartir cartas en todas las calles señaladas,  representadas por las aristas del grafo. Para ayudar al cartero, el camino tiene que ser el m\'{a}s corto posible, lo que quiere decir que ninguna de las calles se debe recorrer m\'{a}s de una vez y que al final de su recorrido, llegue de regreso a la oficina del correo. 
+\section{Fundamentos te\'{o}ricos}
 \subsection{Caminos y grafos eulerianos}
 \begin{definition}
 Un camino $C$ en un grafo conexo $G$ se le denomina \emph{camino euleriano}, cuando cada arista de $G$ se encuentra en $C$.
@@ -48,7 +74,7 @@ La proposición es demostrada mediante el razonamiento circular.
 \\$2. \rightarrow 3.$
 \\Asumimos que el grado cada nodo $v \in G$ es par. Ya que $G$ es un grafo conexo y ningún nodo tiene un grado de 1, entonces $G$ no es un árbol y, por lo tanto, tiene por lo menos un ciclo. Tiene $G$ exactamente un ciclo, entonces es $G$ un grafo ciclo $C_{n}$ para un $n$ y la disyunción seria solo ese ciclo. Suponiendo que sea verdadero para grafos que no contengan mas de $k$ ciclos y $G$ contiene $k+1$ ciclos. Sea $C$ un ciclo en $G$ y sea $G'$ el grafo resultante de $G$, cuando se eliminan las aristas pertenecientes a $C$. Al eliminar las aristas de $C$, el grado de cada nodo se reduce por 2. Por lo tanto, el grado de cada nodo de $G'$ es par. De esto resulta, que a cada componente conexo de $G'$, no le pertenecen mas de $k$ ciclos. Cada componente conexo de $G'$ cumple con la suposición.
 \\$3. \rightarrow 1.$
-\\Asumimos que la disyunción de $G$ sean ciclos. Estos ciclos se llamarán $S_{1}, S_{2}, ..., S_{k}$. Sea $C$ el ciclo mas largo, tal que el conjunto de aristas de $C$ es $$E(C)=E(S_{j1}) \cup E(S_{j2}) \cup ... \cup E(S_{jm})$$ para varias $S_{j1}, S_{j2}, ..., S_{jm}$. Sea entonces $e$ una arista que no pertenezca a $C$, pero que sea incidente en un nodo $v$ de $C$, entonces $e$ y $v$ deberían pertenecer a un ciclo que no comparte ninguna arista con $C$. Sea entonces $C'$ el ciclo que se obtiene uniendo $C$ y $S_{i}$ en $v$. Como a $C'$ le pertenecen todas las aristas de $C$ y $S_{i}$, contradice que $C$ sea el ciclo mas largo. Por lo tanto ya le perteneces todas las aristas de $G$ a $C$, lo que quiere decir que $C$ es un ciclo euleriano. Por ello, $G$ es un grafo euleriano.
+\\Asumimos que la disyunción de $G$ sean ciclos. Estos ciclos se llamarán $S_{1}, S_{2}, ..., S_{k}$. Sea $C$ el ciclo mas largo, tal que el conjunto de aristas de $C$ es $$E(C)=E(S_{j1}) \cup E(S_{j2}) \cup ... \cup E(S_{jm})$$ para varias $S_{j1}, S_{j2}, ..., S_{jm}$. Sea entonces $e$ una arista que no pertenezca a $C$, pero que sea incidente en un nodo $v$ de $C$, entonces $e$ y $v$ deberían pertenecer a un ciclo que no comparte ninguna arista con $C$. Sea entonces $C'$ el ciclo que se obtiene uniendo $C$ y $S_{i}$ en $v$. Como a $C'$ le pertenecen todas las aristas de $C$ y $S_{i}$, contradice que $C$ sea el ciclo mas largo. Por lo tanto ya le pertenecen todas las aristas de $G$ a $C$, lo que quiere decir que $C$ es un ciclo euleriano. Por ello, $G$ es un grafo euleriano.
 \end{proof}
 \subsection{Algoritmos para encontrar ciclos eulerianos}
 Si se conoce que $G$ es un grafo euleriano, se tiene que poder encontrar el ciclo euleriano en $G$. Esto es posible con el algoritmo de Hierholzer.
@@ -84,15 +110,16 @@ A diferencia del algoritmo de Hierholzer, es posible, mediante el algoritmo de F
 \subsection{Algoritmo para generar la matriz de relaci\'{o}n}
 \begin{enumerate}
 \item Sea el ingreso del usuario $m$, tal que $6\leq m\leq 12$.
-\item Se genera la matriz de relaci\'{o}n $M_{R}$ de $m \times m$.
+\item Se genera un arreglo $M_{R}$ de $m \times m$ que representar\'{a} la matriz de relaci\'{o}n.
+\item Se crea un ciclo de $i=1$ hasta $i=m-1$ y otro de $j=1$ hasta $j=m-1$ dentro del ciclo anterior.
 \item A todos los elementos de $m_{ij}$ de $M_{R}$, tal que $i=j$, se les asigna el valor $0$.
-\item Sea $i=1$.
-\item A cada uno los valores $m_{ij}$, en los que $j>i$, se les asigna un valor de $1$ o $0$, de tal manera que la suma de los elementos de $i$ que contengan $1$ sea par.
-\item $m_{ij}=m_{ji}$, para todos los elementos de la fila $i$, para los que vale $j>i$.
-\item Si $i=m-1$, termina el algoritmo. De lo contrario aumenta el valor de $i$ por uno y se regresa al paso 5.
+\item A cada $m_{ij}$, tal que $i<j$ y $j<m-1$, se les asigna un valor de $1$ o $0$ de manera aleatoria.
+\item Si la suma de todos los elementos $m_{ij}$ de la fila $i$ para hasta $j=m-1$ es par, entonces al ultimo elemento se le asigna el valor 0; caso contrario, el valor 1.
+\item $m_{ij}=m_{ji}$, para todos los elementos de la fila $i$, para los que vale $j>i$
+\item Se termina el ciclo de $j$, pero se vuelve a generar otro y repetir el proceso desde el paso 4 hasta terminar el ciclo de $i$.
 \end{enumerate}
-\subsubsection*{Ejemplo}
-Si el ingreso del usuario es $m=7$, se genera una matriz de relaci\'{o}n $M_{R}$ (para los nodos $A, B, C, ..., G$) de $7\times 7$. La matriz resultante del paso 3 ser\'{i}a esta:
+\subsubsection{Ejemplo}
+Si el ingreso del usuario es $m=7$, se genera una matriz de relaci\'{o}n $M_{R}$ (para los nodos $A, B, C, ..., G$) de $7\times 7$. La matriz resultante del paso 4 ser\'{i}a esta:
 $$M_{R}=
 \bordermatrix{
      &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
@@ -133,11 +160,16 @@ G&1&0&0&1&0&0&0\cr
 $$
 \subsection{Algoritmo para dibujar el grafo correspondiente a $M_{R}$}
 \begin{enumerate}
-\item Se dibujan los nodos $N_{1}, N_{2}, ..., N_{m}$ al rededor de un punto central, comenzando por $N_{1}$ en $0^{\circ}$.
-\item Se selecciona el grado de separaci\'{o}n $\alpha$, de tal manera que para cualquier $N_{n}$, $$\alpha(N_{n}) = n\frac{360^{\circ}}{m}$$
-\item Para cada $m_{ij}\in <M_{R}  \vert  i>j$ que sea 1, se traza una arista del nodo $N_{i}$ al nodo $N_{j}$.
+\item Se crea una lista de nodos enlazada, donde cada nodo tendr\'{a} como atributos a su car\'{a}cter y los otros nodos con los que est\'{a} enlazado. La lista tiene como atributos al nodo principal, la cantidad de nodos y un vector de enlaces (que en este caso servir\'{a} para marcar las aristas). Por \'{u}ltimo, los enlaces tendr\'{a}n como atributo a ambos nodos que lo generan.
+\item A partir de la matriz, se registra el car\'{a}cter de cada nodo y los otros a los que est\'{a} enlazado. Tambi\'{e}n se registra la cantidad de nodos y al nodo principal.
+\item Se marca un punto en el centro de la ventana, el cual servir\'{a} como punto de referencia del grafo. 
+\item Se coloca el nodo $N_1$ en la posici\'{o}n inicial a una distancia arbitraria del punto de referencia central y en $0^\circ$.
+\item Se selecciona el grado de separaci\'{o}n $\alpha$, de tal manera que para cualquier $N_{n}$, $$\alpha(N_{n}) = (n-1)\frac{360^{\circ}}{m}$$
+\item Se dibujan los nodos $N_{2}, ..., N_{m}$ al rededor del punto de referencia con una separaci\'{o}n de $\alpha$ con respecto a $N_1$ formando una circunferencia de radio arbitrario.
+\item Para cada $m_{ij}\in <M_{R}  \vert  i<j$ que sea 1, se traza una arista del nodo $N_{i}$ al nodo $N_{j}$.
 \end{enumerate}
-\subsubsection*{Ejemplo}
+\newpage
+\subsubsection{Ejemplo}
 Dibujaremos el grafo a partir de la matriz dada en el ejemplo anterior. \\Tomamos al nodo $A$ como nuestro $N_{1}$.  Como $m = 7$, el grado de la separaci\'{o}n de cada nodo al nodo previo es de $\alpha \approx 51^\circ$. La imagen resultante ser\'{i}a la siguiente:\\
 \begin{center}
 \begin{tikzpicture}
@@ -149,10 +181,10 @@ Dibujaremos el grafo a partir de la matriz dada en el ejemplo anterior. \\Tomamo
 \draw (255:3cm) circle (0.3cm) node(f)     {F};
 \draw (306:3cm) circle (0.3cm) node(g)     {G};
 \draw[dashed, very thick] (0,0) -- (a) (0,0) -- (b);
+\draw [dotted] (0,0) circle (3cm);
 \draw (1,0) arc (0:51:1cm) node [right, near start] {$51^\circ$};
 \end{tikzpicture}
 \end{center}
-\newpage
 Al conectar los nodos con aristas seg\'{u}n $M_{R}$, se obtiene el grafo completado.
 \begin{center}
 \begin{tikzpicture}

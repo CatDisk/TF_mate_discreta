@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.22)  20 MAY 2017 18:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.22)  21 MAY 2017 00:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -700,18 +700,18 @@ LaTeX Info: Redefining \% on input line 6.
 )
 \openout1 = `Documentacion.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -774,66 +774,81 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-LaTeX Info: Redefining \. on input line 15.
-LaTeX Info: Redefining \% on input line 15.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
 
-<koenigsberg.jpg, id=4, 453.8556pt x 315.8199pt>
+<logo_upc.png, id=4, 301.125pt x 301.125pt>
+File: logo_upc.png Graphic file (type png)
+ <use logo_upc.png>
+Package pdftex.def Info: logo_upc.png used on input line 16.
+(pdftex.def)             Requested size: 60.22392pt x 60.22392pt.
+ [1
+
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo_
+upc.png>]
+(./Documentacion.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
+)
+\tf@toc=\write4
+\openout4 = `Documentacion.toc'.
+
+ [2] <koenigsberg.jpg, id=20, 453.8556pt x 315.8199pt>
 File: koenigsberg.jpg Graphic file (type jpg)
- <use koenigsberg.jpg>
-Package pdftex.def Info: koenigsberg.jpg used on input line 19.
+
+<use koenigsberg.jpg>
+Package pdftex.def Info: koenigsberg.jpg used on input line 43.
 (pdftex.def)             Requested size: 226.92725pt x 157.90956pt.
-
-<pregelbruecken.png, id=5, 467.7475pt x 176.66pt>
+ <pregelbruecken.png, id=21, 467.7475pt x 176.66pt>
 File: pregelbruecken.png Graphic file (type png)
- <use pregelbruecken.png>
-Package pdftex.def Info: pregelbruecken.png used on input line 25.
+
+<use pregelbruecken.png>
+Package pdftex.def Info: pregelbruecken.png used on input line 49.
 (pdftex.def)             Requested size: 327.421pt x 123.66115pt.
+ [1 <./koenigsberg.jpg> <./pregelbruecken.png>]
+[2] [3] [4] [5]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 27.
+(Font)              <14.4> on input line 161.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 27.
-
-[1
-
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./koeni
-gsberg.jpg> <./pregelbruecken.png>] [2] [3] [4] [5]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 134.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 134.
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+(Font)              <7> on input line 161.
+ [6]
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
 
  []
 
-[6] [7] (./Documentacion.aux
+[7] (./Documentacion.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 12730 strings out of 493014
- 250066 string characters out of 6133351
- 299152 words of memory out of 5000000
- 16036 multiletter control sequences out of 15000+600000
- 8856 words of font info for 31 fonts, out of 8000000 for 9000
+ 12748 strings out of 493014
+ 250358 string characters out of 6133351
+ 300151 words of memory out of 5000000
+ 16050 multiletter control sequences out of 15000+600000
+ 9155 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,54p,1173b,557s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,6n,54p,1167b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
 sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Documentacion.pdf (7 pages, 238190 bytes).
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Documentacion.pdf (9 pages, 264672 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 87 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
