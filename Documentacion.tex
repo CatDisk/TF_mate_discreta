@@ -6,6 +6,8 @@
 \usepackage{amsthm}
 \usepackage{tikz}
 \usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{framed}
 
 \newtheorem{definition}{Definición}
 \newtheorem{lemma}{Proposición}
@@ -114,16 +116,44 @@ A diferencia del algoritmo de Hierholzer, es posible, mediante el algoritmo de F
 \item Se crea un ciclo de $i=1$ hasta $i=m-1$ y otro de $j=1$ hasta $j=m-1$ dentro del ciclo anterior.
 \item A todos los elementos de $m_{ij}$ de $M_{R}$, tal que $i=j$, se les asigna el valor $0$.
 \item A cada $m_{ij}$, tal que $i<j$ y $j<m-1$, se les asigna un valor de $1$ o $0$ de manera aleatoria.
-\item Si la suma de todos los elementos $m_{ij}$ de la fila $i$ para hasta $j=m-1$ es par, entonces al ultimo elemento se le asigna el valor 0; caso contrario, el valor 1.
-\item $m_{ij}=m_{ji}$, para todos los elementos de la fila $i$, para los que vale $j>i$
+\item Si la suma de todos los elementos $m_{ij}$ de la fila $i$ para hasta $j=m-1$ es par, entonces al \'{u}ltimo elemento se le asigna el valor 0; caso contrario, el valor 1.
+\item $m_{ij}=m_{ji}$, para el \'{u}ltimo elemento de la fila $i$.
 \item Se termina el ciclo de $j$, pero se vuelve a generar otro y repetir el proceso desde el paso 4 hasta terminar el ciclo de $i$.
 \end{enumerate}
 \subsubsection{Ejemplo}
-Si el ingreso del usuario es $m=7$, se genera una matriz de relaci\'{o}n $M_{R}$ (para los nodos $A, B, C, ..., G$) de $7\times 7$. La matriz resultante del paso 4 ser\'{i}a esta:
+\begin{itemize}
+\item Si el ingreso del usuario es $m=7$, se genera una matriz de relaci\'{o}n $M_{R}$ (para los nodos $A, B, C, ..., G$) de $7\times 7$ sin asignarle valores. (Paso 1 y 2)
+$$M_{R}=
+\bordermatrix{
+     &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
+A    &     m_{AA}&     m_{AB}     &     m_{AC}     &     m_{AD}     &     m_{AE}     &     m_{AF}     &     m_{AG}     \cr
+B    &     m_{BA}&     m_{BB}     &     m_{BC}     &     m_{BD}     &     m_{BE}     &     m_{BF}     &     m_{BG}     \cr
+C    &     m_{CA}&     m_{CB}     &     m_{CC}     &     m_{CD}     &     m_{CE}     &     m_{CF}     &     m_{CG}     \cr
+D    &     m_{DA}&     m_{DB}     &     m_{DC}     &     m_{DD}     &     m_{DE}     &     m_{DF}     &     m_{DG}     \cr
+E    &     m_{EA}&     m_{EB}     &     m_{EC}     &     m_{ED}     &     m_{EE}     &     m_{EF}     &     m_{EG}     \cr
+F    &     m_{FA}&     m_{FB}     &     m_{FC}     &     m_{FD}     &     m_{FE}     &     m_{FF}     &     m_{FG}     \cr
+G    &     m_{GA}&     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     m_{GG}\cr
+}
+$$
+\item Se crea el ciclo de $i$ y $j$, por el momento nos enfocaremos en el ciclo cuando $j=1$. Este ciclo modificar\'{a} los elementos de la fila $A$. (Paso 3)
+\item Se asigna al elemento $m_{ij}$, tal que $i=j$, el valor $0$. En este caso es el elemento $m_{AA}$. (Paso 4)
 $$M_{R}=
 \bordermatrix{
      &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
 A    &     0     &     m_{AB}     &     m_{AC}     &     m_{AD}     &     m_{AE}     &     m_{AF}     &     m_{AG}     \cr
+B    &     m_{BA}&     m_{BB}     &     m_{BC}     &     m_{BD}     &     m_{BE}     &     m_{BF}     &     m_{BG}     \cr
+C    &     m_{CA}&     m_{CB}     &     m_{CC}     &     m_{CD}     &     m_{CE}     &     m_{CF}     &     m_{CG}     \cr
+D    &     m_{DA}&     m_{DB}     &     m_{DC}     &     m_{DD}     &     m_{DE}     &     m_{DF}     &     m_{DG}     \cr
+E    &     m_{EA}&     m_{EB}     &     m_{EC}     &     m_{ED}     &     m_{EE}     &     m_{EF}     &     m_{EG}     \cr
+F    &     m_{FA}&     m_{FB}     &     m_{FC}     &     m_{FD}     &     m_{FE}     &     m_{FF}     &     m_{FG}     \cr
+G    &     m_{GA}&     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     m_{GG}\cr
+}
+$$
+\item Se le asigna valores aleatorios a los elementos, excepto al \'{u}ltimo, de la fila $A$. (Paso 5)
+$$M_{R}=
+\bordermatrix{
+     &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
+A    &     0     &     1          &     0          &     0          &     1          &     0          &     m_{AG}     \cr
 B    &     m_{BA}&     0          &     m_{BC}     &     m_{BD}     &     m_{BE}     &     m_{BF}     &     m_{BG}     \cr
 C    &     m_{CA}&     m_{CB}     &     0          &     m_{CD}     &     m_{CE}     &     m_{CF}     &     m_{CG}     \cr
 D    &     m_{DA}&     m_{DB}     &     m_{DC}     &     0          &     m_{DE}     &     m_{DF}     &     m_{DG}     \cr
@@ -132,49 +162,127 @@ F    &     m_{FA}&     m_{FB}     &     m_{FC}     &     m_{FD}     &     m_{FE}
 G    &     m_{GA}&     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     0     \cr
 }
 $$
-Al culminar el bucle del algoritmo por primera vez, es esta la matriz:
+\item Se calcula la suma de los valores de los valores de los elementos de la fila $A$, la paridad de este resultado determina si el \'{u}ltimo elemento es $1$ o $0$. (Paso 6)
+$$0+1+0+0+1+0+0=2 \rightarrow 2|2$$
+Entonces
 $$M_{R}=
 \bordermatrix{
      &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
-A    &     0     &     1          &     1          &     0          &     1          &     0          &     1          \cr
+A    &     0     &     1          &     0          &     0          &     1          &     0          &     0          \cr
+B    &     m_{BA}&     0          &     m_{BC}     &     m_{BD}     &     m_{BE}     &     m_{BF}     &     m_{BG}     \cr
+C    &     m_{CA}&     m_{CB}     &     0          &     m_{CD}     &     m_{CE}     &     m_{CF}     &     m_{CG}     \cr
+D    &     m_{DA}&     m_{DB}     &     m_{DC}     &     0          &     m_{DE}     &     m_{DF}     &     m_{DG}     \cr
+E    &     m_{EA}&     m_{EB}     &     m_{EC}     &     m_{ED}     &     0          &     m_{EF}     &     m_{EG}     \cr
+F    &     m_{FA}&     m_{FB}     &     m_{FC}     &     m_{FD}     &     m_{FE}     &     0          &     m_{FG}     \cr
+G    &     m_{GA}&     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     0     \cr
+}
+$$
+\pagebreak
+\item Se igualan todos los elementos de la fila $A$ con sus elementos sim\'{e}tricos correspondientes.(Paso7)
+$$M_{R}=
+\bordermatrix{
+     &     A     &     B          &     C          &     D          &     E          &     F          &     G          \cr
+A    &     0     &     1          &     0          &     0          &     1          &     0          &     m_{AG}     \cr
 B    &     1     &     0          &     m_{BC}     &     m_{BD}     &     m_{BE}     &     m_{BF}     &     m_{BG}     \cr
-C    &     1     &     m_{CB}     &     0          &     m_{CD}     &     m_{CE}     &     m_{CF}     &     m_{CG}     \cr
+C    &     0     &     m_{CB}     &     0          &     m_{CD}     &     m_{CE}     &     m_{CF}     &     m_{CG}     \cr
 D    &     0     &     m_{DB}     &     m_{DC}     &     0          &     m_{DE}     &     m_{DF}     &     m_{DG}     \cr
 E    &     1     &     m_{EB}     &     m_{EC}     &     m_{ED}     &     0          &     m_{EF}     &     m_{EG}     \cr
 F    &     0     &     m_{FB}     &     m_{FC}     &     m_{FD}     &     m_{FE}     &     0          &     m_{FG}     \cr
-G    &     1     &     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     0     \cr
+G    &     0     &     m_{GB}     &     m_{GC}     &     m_{GD}     &     m_{GE}     &     m_{GF}     &     0     \cr
 }
 $$
-Una vez culminado el algoritmo, se obtiene la matriz de relaci\'{o}n
+\item Una vez culminado el algoritmo, se obtiene la matriz de relaci\'{o}n
 $$M_{R}=
 \bordermatrix{
  &A&B&C&D&E&F&G\cr
-A&0&1&1&0&1&0&1\cr
+A&0&1&0&0&1&0&0\cr
 B&1&0&1&0&0&0&0\cr
-C&1&1&0&0&1&1&0\cr
+C&0&1&0&0&1&1&1\cr
 D&0&0&0&0&1&0&1\cr
 E&1&0&1&1&0&1&0\cr
-F&0&0&1&0&1&0&0\cr
-G&1&0&0&1&0&0&0\cr
+F&0&1&0&0&1&0&0\cr
+G&1&0&1&0&0&0&0\cr
 }
 $$
+\end{itemize}
 \subsection{Algoritmo para dibujar el grafo correspondiente a $M_{R}$}
 \begin{enumerate}
 \item Se crea una lista de nodos enlazada, donde cada nodo tendr\'{a} como atributos a su car\'{a}cter y los otros nodos con los que est\'{a} enlazado. La lista tiene como atributos al nodo principal, la cantidad de nodos y un vector de enlaces (que en este caso servir\'{a} para marcar las aristas). Por \'{u}ltimo, los enlaces tendr\'{a}n como atributo a ambos nodos que lo generan.
 \item A partir de la matriz, se registra el car\'{a}cter de cada nodo y los otros a los que est\'{a} enlazado. Tambi\'{e}n se registra la cantidad de nodos y al nodo principal.
-\item Se marca un punto en el centro de la ventana, el cual servir\'{a} como punto de referencia del grafo. 
+\item Se calcula el m\'{a}ximo de visitas permitidas $V$ de cada nodo, a partir de la cantidad de enlaces $e$, con la siguiente f\'{o}rmula: $$V=\frac{e}{2}$$
+\item Se marca un punto en el centro de la ventana, el cual servir\'{a} como punto de referencia del grafo.
 \item Se coloca el nodo $N_1$ en la posici\'{o}n inicial a una distancia arbitraria del punto de referencia central y en $0^\circ$.
-\item Se selecciona el grado de separaci\'{o}n $\alpha$, de tal manera que para cualquier $N_{n}$, $$\alpha(N_{n}) = (n-1)\frac{360^{\circ}}{m}$$
+\item Se selecciona el grado de separaci\'{o}n $\alpha$, de tal manera que para cualquier $N_{n}$, $$\alpha = (n-1)\frac{360^{\circ}}{m}$$
 \item Se dibujan los nodos $N_{2}, ..., N_{m}$ al rededor del punto de referencia con una separaci\'{o}n de $\alpha$ con respecto a $N_1$ formando una circunferencia de radio arbitrario.
-\item Para cada $m_{ij}\in <M_{R}  \vert  i<j$ que sea 1, se traza una arista del nodo $N_{i}$ al nodo $N_{j}$.
+\item Se cuenta al nodo principal como visitado.
+\item Se verifica si los enlaces de nodo principal est\'{a}n en el vector de enlaces y si el nodo con el que se va a enlazar ha sobrepasado el l\'{i}mite de visitas permitidas.
+\item Si \emph{solo} se ha sobrepasado el l\'{i}mite de visitas de los nodos, siga al poaso 17.
+\item Si se ha sobrepasado el l\'{i}mite de visitas de los nodos y todos sus enlaces est\'{a}n en el vector, siga al paso 19.
+\item Si no se ha dado ninguno de los casos de 10 y 11, siga al paso 13.
+\item Se dibuja la a arista de cualquier enlace al nodo principal que no est\'{e} marcado.
+\item Al dibujar la arista se le agrega el enlace entre ese nodo y el nodo principal al vector.
+\item El nodo que se enlaz\'{o} en la gr\'{a}fica con el nodo principal se vuelve el nuevo nodo principal.
+\item Regrese al paso 8.
+\item Se reduce en $1$ la cantidad de visitas al nodo inicial.
+\item Regrese al paso 8.
+\item Termina el algoritmo.
 \end{enumerate}
 \newpage
 \subsubsection{Ejemplo}
-Dibujaremos el grafo a partir de la matriz dada en el ejemplo anterior. \\Tomamos al nodo $A$ como nuestro $N_{1}$.  Como $m = 7$, el grado de la separaci\'{o}n de cada nodo al nodo previo es de $\alpha \approx 51^\circ$. La imagen resultante ser\'{i}a la siguiente:\\
+Dibujaremos el grafo a partir de la matriz dada en el ejemplo anterior.
+\begin{itemize}
+\item Se crean $7$ nodos, la lista y los 9 enlaces. De ahí se registran los datos a partir de $M_{R}$. (Pasos 1, 2 y 3)\\
+\begin{tabular}{ c  c  c  l }
+\multicolumn{4}{c}{Nodos}\\
+\hline
+\\[-0.8em]
+$A$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{2}{2}=1$ & n. enlazados $={B,E}$\\
+\\[-0.8em]
+\hline
+\\[-0.8em]
+$B$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{2}{2}=1$ & n. enlazados $={A,C}$\\
+\\[-0.8em]
+\hline
+\\[-0.8em]
+$C$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{4}{2}=2$ & n. enlazados $={B,E,F,G}$\\
+\\[-0.8em]
+\hline
+\\[-0.8em]
+$D$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{2}{2}=1$ & n. enlazados $={E,G}$\\
+\\[-0.8em]
+\hline
+\\[-0.8em]
+$E$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{4}{2}=2$ & n. enlazados $={A,C,D,F}$\\
+\\[-0.8em]
+\hline
+\\[-0.8em]
+$F$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{2}{2}=1$ & n. enlazados $={E,C}$\\
+\\[-0.8em]
+\hline
+\\[-0.8em]
+$G$ & cant. visitas $=0$  & m\'{a}x. visitas $=\frac{2}{2}=1$ & n. enlazados $={C,D}$\\
+\\[-0.8em]
+\hline
+\\
+\multicolumn{4}{c}{Enlaces}\\
+\hline
+\\[-0.8em]
+$(A,B)$ & nodo partida $=NULL$ & nodo llegada $=NULL$ & \\
+\hline
+\\[-0.8em]
+$(B,C)$ & nodo partida $=NULL$ & nodo llegada $=NULL$ & \\
+\hline
+\vdots & \vdots & \vdots &\\
+\\[-0.8em]
+\end{tabular}\\
+La lista contiene al nodo inicial $A$, el nodo principal $=NULL$, \\la cantidad de nodos $=7$ y el vector de enlaces $\{\}$.
+\pagebreak
+\item Tomamos al nodo $A$ como nuestro $N_{1}$.  Como $m = 7$, el grado de la separaci\'{o}n de cada nodo al nodo previo es de $\alpha \approx 51^\circ$. La imagen resultante ser\'{i}a la siguiente: (Pasos 5-7)\\
 \begin{center}
 \begin{tikzpicture}
+\draw (0:3cm) circle (0.4cm);
 \draw (0:3cm) circle (0.3cm) node(a){A};
-\draw (51:3cm) circle (0.3cm) node (b)      {B};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
 \draw (102:3cm) circle (0.3cm) node(c)     {C};
 \draw (153:3cm) circle (0.3cm) node(d)     {D};
 \draw (204:3cm) circle (0.3cm) node(e)     {E};
@@ -183,23 +291,147 @@ Dibujaremos el grafo a partir de la matriz dada en el ejemplo anterior. \\Tomamo
 \draw[dashed, very thick] (0,0) -- (a) (0,0) -- (b);
 \draw [dotted] (0,0) circle (3cm);
 \draw (1,0) arc (0:51:1cm) node [right, near start] {$51^\circ$};
-\end{tikzpicture}
+\end{tikzpicture}\\
 \end{center}
-Al conectar los nodos con aristas seg\'{u}n $M_{R}$, se obtiene el grafo completado.
+\item Cuenta al nodo inicial/principal $A$ como visitado. (Paso 8)\\
+\begin{center}
+Visitados: $A=1$
+\end{center}
+\item Verificamos las opciones de enlaces y nodos. Se ve que no se a sobrepasado el l\'{i}mite de aristas de $B$ y $E$, y que los enlaces $(A,B)$ y $(A,E)$ no est\'{a}n en el vector. (Paso 9 y 12)
+\item Dibujamos la primera arista del nodo principal y agregamos el enlace al vector.\\(Paso 13 y 14)\\
 \begin{center}
 \begin{tikzpicture}
+\draw (0:3cm) circle (0.4cm);
 \draw (0:3cm) circle (0.3cm) node(a){A};
-\draw (51:3cm) circle (0.3cm) node (b)      {B};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
 \draw (102:3cm) circle (0.3cm) node(c)     {C};
 \draw (153:3cm) circle (0.3cm) node(d)     {D};
 \draw (204:3cm) circle (0.3cm) node(e)     {E};
 \draw (255:3cm) circle (0.3cm) node(f)     {F};
 \draw (306:3cm) circle (0.3cm) node(g)     {G};
-\draw [very thick] (a) -- (b) (a) -- (c) (a) -- (e) (a) -- (g);
-\draw [very thick] (b) -- (c);
-\draw [very thick] (c) -- (e) (c) -- (f);
-\draw [very thick] (d) -- (e) (d) -- (g);
-\draw [very thick] (e) -- (f);
-\end{tikzpicture}
+\draw [very thick] (a)--(b);
+\end{tikzpicture}\\
+Visitados: $A=1$\\
+Vector = $\{(A,B)\}$
 \end{center}
+\item Ahora convertimos al nodo $B$ en el nodo principal, sin embargo, $A$ sequir\'{a} siendo el nodo inicial. (Paso 15)
+\begin{center}
+\begin{tikzpicture}
+\draw (51:3cm) circle (0.4cm);
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw [very thick] (a)--(b);
+\end{tikzpicture}\\
+Visitados: $A=1$\\
+Vector = $\{(A,B)\}$
+\end{center}
+\item Volvemos a repetir todos los pasos desde el 8 hasta que todos los nodos hayan llegado a su limite de visitas.
+\begin{center}
+\begin{tikzpicture}
+\draw (51:3cm) circle (0.4cm);
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw [very thick] (a)--(b)--(c);
+\end{tikzpicture}\\
+Visitados: $A=1;B=1$\\
+Vector = $\{(A,B)\}$\\
+\begin{tikzpicture}
+\filldraw [white] (0,2) circle (3pt);
+\filldraw (0,1) circle (3pt);
+\filldraw (0,0) circle (3pt);
+\filldraw (0,-1) circle (3pt);
+\end{tikzpicture}\\
+\end{center}
+\begin{center}
+\begin{tikzpicture}
+\draw (204:3cm) circle (0.4cm);
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw [very thick] (a)--(b)--(c)--(e)--(d)--(g)--(c)--(f)--(e);
+\end{tikzpicture}\\
+Visitados: $A=1;B=1;C=2;D=1;E=1;F=1;G=1;$\\
+Vector = $\{(A,B),(B,C),(C,E),(E,D),(D,G),(G,C),(C,F),(F,E)\}$\\
+\end{center}
+\item Ya que todos los nodos llegaron al l\'{i}mite de visitas, pero el enlace $(A,E)$ a\'{u}n no est\'{a} en el vector, reducimos en 1 las visitas de $A$ (nodo inicial). Luego regresamos al mismo proceso (Paso 10, 17 y 18)
+\begin{center}
+\begin{tikzpicture}
+\draw (204:3cm) circle (0.4cm);
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw [very thick] (a)--(b)--(c)--(e)--(d)--(g)--(c)--(f)--(e)--(a);
+\end{tikzpicture}\\
+Visitados: $A=0;B=1;C=2;D=1;E=1;F=1;G=1;$\\
+Vector = $\{(A,B),(B,C),(C,E),(E,D),(D,G),(G,C),(C,F),(F,E),(E,A)\}$\\
+\begin{tikzpicture}
+\draw (0:3cm) circle (0.4cm);
+\draw (0:3cm) circle (0.3cm) node(a){A};
+\draw (51:3cm) circle (0.3cm) node (b)     {B};
+\draw (102:3cm) circle (0.3cm) node(c)     {C};
+\draw (153:3cm) circle (0.3cm) node(d)     {D};
+\draw (204:3cm) circle (0.3cm) node(e)     {E};
+\draw (255:3cm) circle (0.3cm) node(f)     {F};
+\draw (306:3cm) circle (0.3cm) node(g)     {G};
+\draw [very thick] (a)--(b)--(c)--(e)--(d)--(g)--(c)--(f)--(e)--(a);
+\end{tikzpicture}\\
+Visitados: $A=1;B=1;C=2;D=1;E=1;F=1;G=1;$\\
+Vector = $\{(A,B),(B,C),(C,E),(E,D),(D,G),(G,C),(C,F),(F,E),(E,A)\}$\\
+\end{center}
+\item Ya que todos los nodos llegaron al l\'{i}mite de visitas y todos los enlaces de $M_{R}$ est\'{a}n en el vector, termina el algoritmo. (Paso 19)
+\end{itemize}
+\subsection{Algoritmo para determinar el camino \'{o}ptimo}
+\begin{enumerate}
+\item Se crea una nueva lista a la que se ingresa como primer elemento al nodo $A$.
+\item Selecciona el primer enlace del vector.
+\item Se agrega al final de la lista al nodo de llegada del primer enlace.
+\item Comp\'{a}ralos con el nodo del elemento del vector de enlaces que le sigue.
+\item El nodo diferente al \'{u}ltimo elemento de la lista es agregado.
+\item Si se lleg\'{o} al final del vector, siga al paso 11.
+\item Selecciona al enlace siguiente del vector.
+\item Regresa al paso 4.
+\item Termin\'{o} el algoritmo.
+\end{enumerate}
+\pagebreak
+\subsubsection{Ejemplo}
+\begin{itemize}
+\item Se crea la lista que definir\'{a} el camino de ciclo \'{o}ptimo, para ello se le ingresa el nodo inicial $A$. (Paso 1)
+\begin{center}
+Lista $camino=\{A\}$\\
+\end{center}
+\item Tomamos el preimer elemento del vector de enlaces. (Paso 2)
+\begin{center}
+Vector$=\{(A,B),(B,C),...,(A,E)\}$\\
+Primer elemento $=(A,B)$\\
+\end{center}
+\item Identificamos al nodo diferente al \'{u}ltimo elemento de la lista. (Paso 4)
+\begin{center}
+\'{U}ltimo elemento de la lista $=A$\\
+Nodo diferente a $A$: $B\leftarrow$ nodo de llegada\\
+\end{center}
+\item Agregamos al nodo de llegada al final de la lista. (Paso 5)
+\begin{center}
+Lista $camino=\{A,B\}$\\
+\end{center}
+\item Al terminar el algoritmo, la lista que describe el camino \'{o}ptimo es la siguiente:
+$$\{A,B,C,E,D,G,C,F,E,A\}$$
+\end{itemize}
 \end{document}
